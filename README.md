@@ -1,4 +1,4 @@
-# Greek Courier Services: Web Scraping & Exploratory Data Analysis (EDA)
+# Greek Courier Services: Web Scraping & Exploratory Data Analysis
 
 ## Project Overview
 Αυτό το project δημιουργήθηκε με σκοπό την εξερεύνηση και την ανάλυση της ικανοποίησης των πελατών από τις 5 μεγαλύτερες* εταιρείες ταχυμεταφορών (courier) στην Ελλάδα (ACS, Courier Center, ELTA Courier, Geniki Taxydromiki, Speedex). 
