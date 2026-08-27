@@ -99,7 +99,7 @@ _\*Η Skroutz Last Mile εξαιρέθηκε, καθώς οι μόνες δια�
 
 <br>
 <p align="left">
-  <img src="images/05_Customer_Complaints_WordCloud.jpg" />
+  <img src="images/05_WordCloud_General.png" />
 </p>
 
 
