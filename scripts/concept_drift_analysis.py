@@ -2,11 +2,17 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+import os
 
 def main():
     print("Loading data...")
+    # Δυναμική εύρεση του σωστού path ανεξάρτητα από το πού τρέχει το script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.dirname(script_dir)
+    data_path = os.path.join(project_root, 'data', '03_reviews_final_processed.csv')
+    
     # Load data
-    df = pd.read_csv('../data/03_reviews_final_processed.csv')
+    df = pd.read_csv(data_path)
     df = df.dropna(subset=['cleaned_text', 'date'])
 
     # Process Dates
@@ -58,8 +64,8 @@ def main():
     plt.legend(title='Θεματολογία', fontsize=11, title_fontsize=12)
     plt.tight_layout()
 
-    # Save image
-    out_path = '../images/11_Keyword_Drift.png'
+    # Save image using robust path
+    out_path = os.path.join(project_root, 'images', '11_Keyword_Drift.png')
     plt.savefig(out_path, dpi=300)
     print(f'Saved graph to: {out_path}')
 
