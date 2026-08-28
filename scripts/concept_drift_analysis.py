@@ -6,7 +6,8 @@ import os
 
 def main():
     print("Loading data...")
-    # Δυναμική εύρεση του σωστού path ανεξάρτητα από το πού τρέχει το script
+
+    # Dynamically find the absolute path to ensure execution from any directory
     script_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.dirname(script_dir)
     data_path = os.path.join(project_root, 'data', '03_reviews_final_processed.csv')
@@ -19,10 +20,10 @@ def main():
     df['date'] = pd.to_datetime(df['date'], errors='coerce')
     df['year'] = df['date'].dt.year
 
-    # Filter years 2019 to 2026 (ignore 2018 as it has only 21 reviews, which adds noise)
+    # Filter years 2019 to 2026 (ignore 2018 as it has only 21 reviews)
     df = df[(df['year'] >= 2019) & (df['year'] <= 2026)]
 
-    # Define keyword groups (lowercase since cleaned_text is lowercase)
+    # Define keyword groups 
     kw_locker = ['locker', 'lockers', 'θυρίδα', 'θυριδα', 'box', 'skroutz point']
     kw_paper = ['χαρτάκι', 'χαρτακι', 'ειδοποιητήριο', 'ειδοποιητηριο']
     kw_digital = ['sms', 'viber', 'εφαρμογή', 'εφαρμογη', 'app', 'μήνυμα', 'μηνυμα']
@@ -49,6 +50,7 @@ def main():
     yearly_stats['SMS/Viber/App (%)'] = (yearly_stats['digital_count'] / yearly_stats['total_reviews']) * 100
 
     print("Generating and saving the line chart...")
+    
     # Plotting
     plt.figure(figsize=(10, 6))
     sns.set_style('darkgrid')

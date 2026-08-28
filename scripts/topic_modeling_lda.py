@@ -5,7 +5,8 @@ import os
 
 def main():
     print("Loading dataset...")
-    # Δυναμική εύρεση του σωστού path
+
+    # Dynamically resolve the correct path
     script_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.dirname(script_dir)
     data_path = os.path.join(project_root, 'data', '03_reviews_final_processed.csv')
@@ -40,11 +41,13 @@ def main():
     ]
 
     print("Vectorizing text (CountVectorizer)...")
+
     # Convert text to numerical vectors
     vectorizer = CountVectorizer(max_df=0.85, min_df=10, stop_words=custom_stopwords, ngram_range=(1,2))
     X = vectorizer.fit_transform(df['cleaned_text'])
 
     print("Running LDA Model for 5 Topics...")
+
     # Train Latent Dirichlet Allocation (LDA) algorithm
     n_topics = 5
     lda = LatentDirichletAllocation(n_components=n_topics, random_state=42)
@@ -54,6 +57,7 @@ def main():
 
     print("\n--- TOPIC MODELING RESULTS ---")
     for topic_idx, topic in enumerate(lda.components_):
+        
         # Extract the top 14 keywords for each Topic
         top_features_ind = topic.argsort()[:-15:-1]
         top_features = [feature_names[i] for i in top_features_ind]
